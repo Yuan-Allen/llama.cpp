@@ -567,6 +567,10 @@ void * ggml_backend_reg_get_proc_address(ggml_backend_reg_t reg, const char * na
 #include "ggml-kompute.h"
 #endif
 
+#ifdef GGML_USE_TOPSCC
+#include "ggml-topscc.h"
+#endif
+
 #include "ggml-cpu.h"
 
 struct ggml_backend_registry {
@@ -600,6 +604,9 @@ struct ggml_backend_registry {
 #endif
 #ifdef GGML_USE_KOMPUTE
         register_backend(ggml_backend_kompute_reg());
+#endif
+#ifdef GGML_USE_TOPSCC
+        register_backend(ggml_backend_topscc_reg());
 #endif
 
         register_backend(ggml_backend_cpu_reg());

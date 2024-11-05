@@ -8344,6 +8344,14 @@ int ggml_cpu_has_cann(void) {
 #endif
 }
 
+int ggml_cpu_has_topscc(void) {
+#if defined(GGML_USE_TOPSCC)
+    return 1;
+#else
+    return 0;
+#endif
+}
+
 int ggml_cpu_has_llamafile(void) {
 #if defined(GGML_USE_LLAMAFILE)
     return 1;

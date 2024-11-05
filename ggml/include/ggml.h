@@ -2414,6 +2414,7 @@ extern "C" {
     GGML_API int ggml_cpu_has_rpc        (void);
     GGML_API int ggml_cpu_has_vsx        (void);
     GGML_API int ggml_cpu_has_cann       (void);
+    GGML_API int ggml_cpu_has_topscc     (void);
     GGML_API int ggml_cpu_has_llamafile  (void);
 
 #ifdef  __cplusplus

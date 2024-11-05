@@ -949,6 +949,18 @@ if (GGML_CANN)
     endif()
 endif()
 
+if(GGML_TOPSCC)
+    set(GGML_HEADERS_TOPSCC "../include/ggml-topscc.h")
+    file(GLOB GGML_SOURCES_TOPSCC "ggml-topscc/*.cpp")
+    list(APPEND GGML_SOURCES_TOPSCC "ggml-topscc.cpp")
+
+    list(APPEND GGML_CDEF_PUBLIC GGML_USE_TOPSCC)
+
+    if(NOT GGML_TOPSCC)
+        message(WARNING "TOPSCC: GGML_TOPSCC is turned OFF, see above for details.")
+    endif()
+endif()
+
 function(get_flags CCID CCVER)
     set(C_FLAGS "")
     set(CXX_FLAGS "")
@@ -1397,6 +1409,7 @@ add_library(ggml
             ${GGML_SOURCES_LLAMAFILE} ${GGML_HEADERS_LLAMAFILE}
             ${GGML_SOURCES_AMX}       ${GGML_HEADERS_AMX}
             ${GGML_SOURCES_CANN}      ${GGML_HEADERS_CANN}
+            ${GGML_SOURCES_TOPSCC}    ${GGML_HEADERS_TOPSCC}    
             ggml-aarch64.c            ggml-aarch64.h
             )
 
